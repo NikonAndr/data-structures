@@ -1,0 +1,5 @@
+program
+*.exe
+*.out
+
+.DS_Store
