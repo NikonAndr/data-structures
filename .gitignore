@@ -5,4 +5,5 @@
 .DS_Store
 */visualisation/plots/
 */results
-build/
+build/*
+!build/.gitkeep
