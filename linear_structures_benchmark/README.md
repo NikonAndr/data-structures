@@ -51,7 +51,7 @@ pip install pandas matplotlib
 # 🐧 Linux / macOS
 
 ```bash
-g++ -std=c++17 src/*.cpp -Iinclude -o program ./program
+ g++ -std=c++17 src/*.cpp -Iinclude -o build/program
 ```
 
 # 🪟 Windows
@@ -59,7 +59,7 @@ g++ -std=c++17 src/*.cpp -Iinclude -o program ./program
 ## Opcja 1: MinGW (g++)
 
 ```bash
-g++ -std=c++17 src/*.cpp -Iinclude -o program.exe program.exe
+g++ -std=c++17 src/*.cpp -Iinclude -o build/program.exe
 ```
 
 ## Opcja 2: Visual Studio (MSVC)
@@ -73,13 +73,13 @@ cl /std:c++17 /Iinclude src\*.cpp program.exe
 ### 2. Uruchom benchmark
 
 ```bash
-./program
+./build/program
 ```
 
 Windows:
 
 ```bash
-program.exe
+build/program.exe
 ```
 
 👉 Program wygeneruje dane w folderze `results/`
