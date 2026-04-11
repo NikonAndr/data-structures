@@ -51,7 +51,7 @@ void Interface::array_list_if()
                 std::cout << "enter val: ";
                 std::cin >> val; 
                 std::cout << std::endl;
-                ArrayList.find(val);
+                std::cout << ArrayList.find(val) << std::endl;
                 break;
             case 8:
                 ArrayList.print();
@@ -117,7 +117,7 @@ void Interface::singly_list_if()
                 std::cout << "enter val: ";
                 std::cin >> val; 
                 std::cout << std::endl;
-                SinglyList.find(val);
+                std::cout << SinglyList.find(val) << std::endl;
                 break;
             case 8:
                 SinglyList.print();
@@ -182,7 +182,7 @@ void Interface::doubly_list_if()
                 std::cout << "enter val: ";
                 std::cin >> val; 
                 std::cout << std::endl;
-                DoublyList.find(val);
+                std::cout << DoublyList.find(val) << std::endl;
                 break;
             case 8:
                 DoublyList.print();
