@@ -1,31 +1,37 @@
-#include "HeapPQ.h"
-#include "ArrayPQ.h"
+#include "benchmark.h"
 #include <iostream>
+
+#include <filesystem>
+
+namespace fs = std::filesystem;
+
+void clear_directory(const std::string& path)
+{
+    if (!fs::exists(path)) return;
+
+    for (const auto& entry : fs::directory_iterator(path))
+    {
+        fs::remove_all(entry.path());
+    }
+}
 
 int main()
 {
-    ArrayPQ* array_pq = new ArrayPQ;
-    HeapPQ* heap_pq = new HeapPQ;
+    char choice;
+    std::cout << "Would you like to delete all previous data? (y/n): ";
+    std::cin >> choice;
 
-    PQ* pq = heap_pq;
-    
-    pq = array_pq;
-
-    for (int i = 0; i < 10; i++)
-    { 
-        pq->insert(i, i+10);
-        pq->print();
-        pq->print_priority();
-        std::cout << "-----" << std::endl;
+    switch (choice)
+    {
+        case 'y':
+            clear_directory("results");
+            clear_directory("visualisation/plots");
+            break;
+        case 'n':
+            break;
+        default:
+            break;
     }
 
-    pq->extract_max();
-
-    pq->print();
-    pq->print_priority();
-
-    pq->modify_key(8, 1);
-
-    pq->print();
-    pq->print_priority();
+    run_all_benchmarks();
 }

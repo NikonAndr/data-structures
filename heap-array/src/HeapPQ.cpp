@@ -147,7 +147,6 @@ void HeapPQ::modify_key(int value, int new_priority)
 
     int old_priority = 0;
 
-    
     //find key, change value 
     for (int i = 0; i < size; i++)
     {
@@ -175,6 +174,11 @@ void HeapPQ::modify_key(int value, int new_priority)
 int HeapPQ::size_of() const
 {
     return size;
+}
+
+std::string HeapPQ::name() const 
+{
+    return "HeapPQ";
 }
 
 void HeapPQ::print() const

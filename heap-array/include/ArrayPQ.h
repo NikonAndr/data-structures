@@ -1,6 +1,7 @@
 #pragma once
 
 #include "PQ.h"
+#include <string>
 
 class ArrayPQ : public PQ {
 private:
@@ -27,6 +28,7 @@ public:
     Node peek() const override;
     void modify_key(int value, int new_priority) override;
     int size_of() const override;
+    std::string name() const override;
 
     void print() const override;
     void print_priority() const override;

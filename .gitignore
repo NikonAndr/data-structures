@@ -7,3 +7,6 @@
 */results
 build/*
 !build/.gitkeep
+
+SD-proj1/
+.vscode/

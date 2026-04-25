@@ -1,5 +1,6 @@
 program
 *.exe
 *.out
+sources.txt
 
 .DS_Store

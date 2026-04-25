@@ -120,6 +120,11 @@ int ArrayPQ::size_of() const
     return size;
 }
 
+std::string ArrayPQ::name() const 
+{
+    return "ArrayPQ";
+}
+
 void ArrayPQ::print() const
 {
     std::cout << "[";
