@@ -11,7 +11,6 @@ private:
     SinglyList SinglyList;
     DoublyList DoublyList;
 public:
-    ~Interface();
     void array_list_if();
     void singly_list_if();
     void doubly_list_if();
