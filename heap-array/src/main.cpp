@@ -1,4 +1,5 @@
 #include "benchmark.h"
+#include "interface.h"
 #include <iostream>
 
 #include <filesystem>
@@ -33,5 +34,8 @@ int main()
             break;
     }
 
-    run_all_benchmarks();
+    Interface interface;
+
+    interface.main_if();
+    return 0;
 }
