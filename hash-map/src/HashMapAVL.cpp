@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-double const LOAD_FACTOR = 0.75;
+double const LOAD_FACTOR = 0.99;
 
 HashMapAVL::HashMapAVL() 
 {
@@ -19,7 +19,7 @@ HashMapAVL::~HashMapAVL()
 
 int HashMapAVL::hash(int key, int mod)
 {
-    return abs(key) % mod;
+    return (key % mod + mod) % mod;
 }
 
 void HashMapAVL::resize()

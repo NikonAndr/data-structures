@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-double const LOAD_FACTOR = 0.75;
+double const LOAD_FACTOR = 0.99;
 
 HashMapList::HashMapList()
 {

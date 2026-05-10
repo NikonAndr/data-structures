@@ -221,8 +221,10 @@ AVL::Node* AVL::remove(Node* current, int key, bool& removed)
         current->value = succesor->value;
 
         //get rid of the duplicate
+        bool dummy = false;
+        current->right = remove(current->right, succesor->key, dummy);
+
         removed = true;
-        current->right = remove(current->right, succesor->key, removed);
     }
 
     updateHeight(current);
