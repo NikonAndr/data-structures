@@ -1,0 +1,36 @@
+name: build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  hash-map:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build hash-map
+        run: |
+          mkdir -p hash-map/build
+          g++ -std=c++17 hash-map/src/*.cpp -Ihash-map/include -o hash-map/build/program
+
+  heap-array:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build heap-array
+        run: |
+          mkdir -p heap-array/build
+          g++ -std=c++17 heap-array/src/*.cpp -Iheap-array/include -o heap-array/build/program
+
+  linear-structures:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build linear_structures_benchmark
+        run: |
+          mkdir -p linear_structures_benchmark/build
+          g++ -std=c++17 linear_structures_benchmark/src/*.cpp -Ilinear_structures_benchmark/include -o linear_structures_benchmark/build/program

@@ -1,186 +1,67 @@
-# 📊 Priority Queue Benchmark
+# Priority Queue — Array vs. Binary Heap
 
-## 🔍 Overview
+**Two C++ priority queue implementations, benchmarked against each other across every core operation.**
 
-Projekt porównuje wydajność dwóch implementacji kolejki priorytetowej w C++:
+![C++](https://img.shields.io/badge/C%2B%2B-17-00599C?logo=c%2B%2B&logoColor=white)
+![Python](https://img.shields.io/badge/benchmarks-Python%203-3776AB?logo=python&logoColor=white)
 
-* Nieposortowana tablica dynamiczna (ArrayPQ)
-* Kopiec binarny (HeapPQ)
+## About
 
-Dla każdej struktury mierzony jest czas wykonania operacji i zapisywany do plików CSV, a następnie wizualizowany w Pythonie.
+Both `ArrayPQ` and `HeapPQ` implement the same abstract `PQ` interface (`insert`, `extract_max`, `peek`, `modify_key`), so the only thing that changes between them is which operations are fast:
 
----
+* **`ArrayPQ`** — an unsorted dynamic array. `insert` is O(1) amortized (just append), but `extract_max` and `peek` have to scan the whole array for the maximum: O(n).
+* **`HeapPQ`** — a binary heap over a dynamic array, maintained with `heapify_up`/`heapify_down`. `insert` and `extract_max` are O(log n), and `peek` is O(1) since the max always sits at the root.
 
-## 📁 Project Structure
+Benchmarking both side by side makes the classic "cheap insert vs. cheap extract" trade-off concrete instead of theoretical.
 
-```text
-include/            # nagłówki C++
-src/                # implementacje i benchmark
-results/            # wyniki (CSV)
-visualisation/      # skrypt do wykresów
-  └── charts.py
-README.md
+## Architecture
+
+```
+main.cpp
+  └── Interface        // menu: HeapPQ / ArrayPQ / Benchmark
+        └── PQ (abstract)
+              ├── ArrayPQ   // unsorted dynamic array
+              └── HeapPQ    // binary heap (heapify_up / heapify_down)
 ```
 
----
+## Usage
 
-## ⚙️ Requirements
-
-### 🔧 C++
-
-* Kompilator C++ (g++, clang lub MSVC)
-* Standard: C++17
-
-### 🐍 Python
-
-* Python 3.x
-
-Biblioteki:
-
-```bash
-pip install pandas matplotlib
-```
-
----
-
-## 🚀 How to Run
-
-### 1. Kompilacja
-
-#### 🐧 Linux / macOS
+### Build & run
 
 ```bash
 g++ -std=c++17 src/*.cpp -Iinclude -o build/program
-```
-
-#### 🪟 Windows
-
-##### Opcja 1: MinGW (g++)
-
-```bash
-g++ -std=c++17 src/*.cpp -Iinclude -o build/program.exe
-```
-
-##### Opcja 2: Visual Studio (MSVC)
-
-```bash
-cl /std:c++17 /Iinclude src\*.cpp /Fe:build\program.exe
-```
-
----
-
-### 2. Uruchom benchmark
-
-```bash
 ./build/program
 ```
 
-Windows:
+Menu: `HeapPQ` / `ArrayPQ` / `Benchmark` / `exit` — the first two let you `insert`, `extract_max`, `peek`, and `modify_key` interactively; `Benchmark` runs the full timed comparison.
 
-```bash
-build\program.exe
-```
+### Benchmark
 
-👉 Program zapyta czy wyczyścić poprzednie wyniki, a następnie wygeneruje dane w folderze `results/`
+`run_all_benchmarks()` times `insert`, `extract_max`, `peek`, and `modify_key` for both structures across a range of sizes, writing CSVs to `results/<operation>/<Structure>.csv`.
 
----
-
-### 3. Wygeneruj wykresy
+### Charts
 
 ```bash
 python visualisation/charts.py
 ```
 
-Jeśli nie działa:
+Reads the CSVs and writes comparison plots to `visualisation/plots/`. For `extract_max` and `peek`, it additionally plots the heap on its own scale (`*_heap_only.png`) — useful since the heap is often so much faster that it's invisible on a shared axis with the array.
 
-```bash
-python3 visualisation/charts.py
-```
+## Benchmarked operations
 
----
-
-## 📊 Results
-
-### 📁 Dane (CSV)
-
-```text
-results/[operation]/[structure].csv
-```
-
-np:
-
-```text
-results/insert/ArrayPQ.csv
-results/extract_max/HeapPQ.csv
-```
-
----
-
-### 📈 Wykresy
-
-Zapisywane automatycznie w:
-
-```text
-visualisation/plots/
-```
-
-np:
-
-```text
-insert.png
-extract_max.png
-extract_max_heap_only.png
-peek.png
-peek_heap_only.png
-modify.png
-```
-
-> Wykresy `*_heap_only.png` pokazują zachowanie samego kopca w osobnej skali — przydatne dla operacji gdzie Heap jest tak szybki, że na wspólnym wykresie z Array jest niewidoczny.
-
----
-
-## 🧪 Benchmarked Operations
-
-| Operacja | ArrayPQ | HeapPQ |
+| Operation | ArrayPQ | HeapPQ |
 |---|---|---|
-| `insert` | O(1) amort. | O(log n) |
+| `insert` | O(1) amortized | O(log n) |
 | `extract_max` | O(n) | O(log n) |
 | `peek` | O(n) | O(1) |
 | `modify_key` | O(n) | O(n) |
 
----
+## Current limitations
 
-## 🧠 How it works
+* `modify_key` is O(n) on both structures — `HeapPQ` doesn't maintain a value-to-index map, so it has to search before it can re-heapify
+* Priority and value are fixed as `int`
 
-1. Program C++:
+## Tech Stack
 
-   * generuje losowe dane
-   * wypełnia struktury i wykonuje operacje
-   * mierzy czas za pomocą `std::chrono`
-   * uśrednia wyniki z wielu serii i kopii
-   * zapisuje wyniki do CSV
-
-2. Python:
-
-   * wczytuje CSV
-   * generuje wykresy porównawcze
-   * dla `extract_max` i `peek` generuje też osobny wykres dla Heap
-   * zapisuje wszystko jako PNG
-
----
-
-## ⚠️ Notes
-
-* Najpierw uruchom benchmark (C++)
-* Dopiero potem generuj wykresy (Python)
-* Jeśli folder `results/` jest pusty → brak wykresów
-
----
-
-## 💡 Tip
-
-Jeśli wykresy się nie pojawiają, upewnij się że:
-
-* benchmark został uruchomiony
-* pliki `.csv` istnieją w `results/`
-* masz zainstalowane biblioteki Python (`pandas`, `matplotlib`)
+* C++17
+* Python 3 (pandas, matplotlib) for benchmarking output
