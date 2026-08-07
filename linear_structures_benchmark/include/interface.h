@@ -7,9 +7,9 @@
 class Interface
 {
 private:
-    ArrayList ArrayList;
-    SinglyList SinglyList;
-    DoublyList DoublyList;
+    ArrayList arrayList;
+    SinglyList singlyList;
+    DoublyList doublyList;
 public:
     void array_list_if();
     void singly_list_if();

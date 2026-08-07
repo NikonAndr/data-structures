@@ -18,19 +18,19 @@ void Interface::array_list_if()
                 std::cout << "enter val: ";
                 std::cin >> val; 
                 std::cout << std::endl;
-                ArrayList.push_back(val);
+                arrayList.push_back(val);
                 break;
             case 2:
                 std::cout << "enter val: ";
                 std::cin >> val; 
                 std::cout << std::endl;
-                ArrayList.push_front(val);
+                arrayList.push_front(val);
                 break;
             case 3:
-                ArrayList.pop_back();
+                arrayList.pop_back();
                 break;
             case 4:
-                ArrayList.pop_front();
+                arrayList.pop_front();
                 break;
             case 5: 
                 std::cout << "enter val: ";
@@ -39,22 +39,22 @@ void Interface::array_list_if()
                 std::cout << "enter index: ";
                 std::cin >> index; 
                 std::cout << std::endl;
-                ArrayList.insert(val, index);
+                arrayList.insert(val, index);
                 break;
             case 6:
                 std::cout << "enter index: ";
                 std::cin >> index; 
                 std::cout << std::endl;
-                ArrayList.remove(index);
+                arrayList.remove(index);
                 break;
             case 7:
                 std::cout << "enter val: ";
                 std::cin >> val; 
                 std::cout << std::endl;
-                std::cout << ArrayList.find(val) << std::endl;
+                std::cout << arrayList.find(val) << std::endl;
                 break;
             case 8:
-                ArrayList.print();
+                arrayList.print();
                 break;
             case 9:
                 return;
@@ -84,19 +84,19 @@ void Interface::singly_list_if()
                 std::cout << "enter val: ";
                 std::cin >> val; 
                 std::cout << std::endl;
-                SinglyList.push_back(val);
+                singlyList.push_back(val);
                 break;
             case 2:
                 std::cout << "enter val: ";
                 std::cin >> val; 
                 std::cout << std::endl;
-                SinglyList.push_front(val);
+                singlyList.push_front(val);
                 break;
             case 3:
-                SinglyList.pop_back();
+                singlyList.pop_back();
                 break;
             case 4:
-                SinglyList.pop_front();
+                singlyList.pop_front();
                 break;
             case 5: 
                 std::cout << "enter val: ";
@@ -105,22 +105,22 @@ void Interface::singly_list_if()
                 std::cout << "enter index: ";
                 std::cin >> index; 
                 std::cout << std::endl;
-                SinglyList.insert(val, index);
+                singlyList.insert(val, index);
                 break;
             case 6:
                 std::cout << "enter index: ";
                 std::cin >> index; 
                 std::cout << std::endl;
-                SinglyList.remove(index);
+                singlyList.remove(index);
                 break;
             case 7:
                 std::cout << "enter val: ";
                 std::cin >> val; 
                 std::cout << std::endl;
-                std::cout << SinglyList.find(val) << std::endl;
+                std::cout << singlyList.find(val) << std::endl;
                 break;
             case 8:
-                SinglyList.print();
+                singlyList.print();
                 break;
             case 9:
                 return;
@@ -149,19 +149,19 @@ void Interface::doubly_list_if()
                 std::cout << "enter val: ";
                 std::cin >> val; 
                 std::cout << std::endl;
-                DoublyList.push_back(val);
+                doublyList.push_back(val);
                 break;
             case 2:
                 std::cout << "enter val: ";
                 std::cin >> val; 
                 std::cout << std::endl;
-                DoublyList.push_front(val);
+                doublyList.push_front(val);
                 break;
             case 3:
-                DoublyList.pop_back();
+                doublyList.pop_back();
                 break;
             case 4:
-                DoublyList.pop_front();
+                doublyList.pop_front();
                 break;
             case 5: 
                 std::cout << "enter val: ";
@@ -170,22 +170,22 @@ void Interface::doubly_list_if()
                 std::cout << "enter index: ";
                 std::cin >> index; 
                 std::cout << std::endl;
-                DoublyList.insert(val, index);
+                doublyList.insert(val, index);
                 break;
             case 6:
                 std::cout << "enter index: ";
                 std::cin >> index; 
                 std::cout << std::endl;
-                DoublyList.remove(index);
+                doublyList.remove(index);
                 break;
             case 7:
                 std::cout << "enter val: ";
                 std::cin >> val; 
                 std::cout << std::endl;
-                std::cout << DoublyList.find(val) << std::endl;
+                std::cout << doublyList.find(val) << std::endl;
                 break;
             case 8:
-                DoublyList.print();
+                doublyList.print();
                 break;
             case 9:
                 return;
