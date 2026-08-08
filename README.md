@@ -2,7 +2,7 @@
 
 # Data Structures & Benchmarks
 
-**C++ data structure implementations, each paired with a benchmark harness that checks whether the textbook complexity actually holds up.**
+**C++ implementations of basic data structures, each with its own dedicated benchmark.**
 
 [![Build](https://github.com/NikonAndr/data-structures/actions/workflows/build.yml/badge.svg)](https://github.com/NikonAndr/data-structures/actions/workflows/build.yml)
 ![C++](https://img.shields.io/badge/C%2B%2B-17-00599C?logo=c%2B%2B&logoColor=white)
@@ -10,7 +10,7 @@
 
 </div>
 
-Three independent data structure projects, built from scratch in C++ with no STL containers and no external C++ dependencies. Each one is measured, not just implemented: a Python benchmark pipeline times every core operation across a range of input sizes and turns the results into comparison plots.
+Repo contains three separate mini projects built for the Wroclaw University of Science and Technology Data Structures class. Every implementation is built from scratch, without using STL or external libraries. Each one also has its own dedicated benchmark, written in C++, that times the main operations at different input sizes — a small Python script then turns the results into charts.
 
 ## Projects
 
